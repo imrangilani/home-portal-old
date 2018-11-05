@@ -2,7 +2,7 @@
   <div class="hello">
     <h1 v-if="msg">{{msg}}</h1>
     <ul>
-    <li v-for="todo in todos" :key="todo">{{ todo.text }}</li>
+    <li v-for="todo in todos" :key="todo.id">{{ todo.text }}</li>
     </ul> 
     <button v-on:click="reverseMessage" >Show Message</button>
   </div>
@@ -15,9 +15,9 @@ export default {
     return{
       msg: "Hello Imran!",
       todos:[
-        {text: 'Learn Javascript'},
-        {text: 'Learn Vue'},
-        {text: 'Build something great'}
+        {id:0, text: 'Learn Javascript'},
+        {id:1, text: 'Learn Vue'},
+        {id:2, text: 'Build something great'}
       ]
     }
   },
