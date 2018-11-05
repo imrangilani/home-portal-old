@@ -1,15 +1,31 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 v-if="msg">{{msg}}</h1>
+    <ul>
+    <li v-for="todo in todos" :key="todo">{{ todo.text }}</li>
+    </ul> 
+    <button v-on:click="reverseMessage" >Show Message</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "HelloWorld",
-  props: {
-    msg: String
-  }
+  data: function(){
+    return{
+      msg: "Hello Imran!",
+      todos:[
+        {text: 'Learn Javascript'},
+        {text: 'Learn Vue'},
+        {text: 'Build something great'}
+      ]
+    }
+  },
+  methods:{
+    reverseMessage: function () {
+      this.msg = this.msg.split('').reverse().join('');
+    }
+  } 
 };
 </script>
 
