@@ -2,16 +2,19 @@
   <div id="appContainer">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld/>
+    <HomePage/>
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
+import HomePage from "./components/HomePage.vue";
 
 export default {
   name: "appl",
   components: {
-    HelloWorld
+    HelloWorld,
+    HomePage
   }
 };
 </script>
