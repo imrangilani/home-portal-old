@@ -1,10 +1,17 @@
 <template>
   <div class="hello">
-    <h1 v-if="msg">{{msg}}</h1>
+    <h1 v-once>{{title}}</h1>
+    <h2 v-if="msg">{{msg}} to {{title}}</h2>
     <ul>
     <li v-for="todo in todos" :key="todo.id">{{ todo.text }}</li>
     </ul> 
+
     <button v-on:click="reverseMessage" >Show Message: </button>
+    <p><a v-bind:href="vueLink">Vue JS</a></p>
+    <p v-html="vueHTML"></p>
+    <button v-on:click="increaseCount">Increase Count</button>
+    <p>{{count}}</p>
+    <input type="text" v-model="title">
     <h2>Counter Example</h2>
     <button v-on:click="counter++">increase</button>
     <button v-on:click="counter--">decrease</button>
@@ -12,7 +19,7 @@
     <p>Counter: {{ counter }}</p>
     <p>Counter: {{ secondCounter }}</p>
     <p>Result: {{ result }}</p>
-       <p>Result: {{ secondResult }}</p>
+    <p>Result: {{ secondResult }}</p>
   </div>
 </template>
 
@@ -21,7 +28,11 @@ export default {
   name: "HelloWorld",
   data: function(){
     return{
+      title: "Vue JS App",
       msg: "Hello Imran!",
+      vueLink: "https://vuejs.org",
+      vueHTML: '<a href="http://www.cnn.com">CNN</a>',
+      count:0,
       todos:[
         {id:0, text: 'Learn Javascript'},
         {id:1, text: 'Learn Vue'},
@@ -33,8 +44,15 @@ export default {
   },
   methods:{
     reverseMessage: function () {
+
       console.log('reverseMessage Called');
+
+      this.title = ("Reversed vue JS App").split('').reverse().join('');
+
       this.msg = this.msg.split('').reverse().join('');
+    },
+    increaseCount: function(){
+      this.count++;
     }
   },
   computed:{
