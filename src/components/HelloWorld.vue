@@ -1,13 +1,15 @@
 <template>
   <div class="hello">
     <h1 v-once>{{title}}</h1>
-    <h2 v-if="msg">{{msg}} to {{title}}</h2>
+    <h2 v-if="msg">{{msg}} {{name}}! to {{title}}</h2>
     <ul>
-    <li v-for="todo in todos" :key="todo.id">{{ todo.text }}</li>
-    </ul> 
+      <li v-for="todo in todos" :key="todo.id">{{ todo.text }}</li>
+    </ul>
 
-    <button @click="reverseMessage" >Show Message: </button>
-    <p><a :href="vueLink">Vue JS</a></p>
+    <button @click="reverseMessage">Show Message:</button>
+    <p>
+      <a :href="vueLink">Vue JS</a>
+    </p>
     <p v-html="vueHTML"></p>
     <button @click="increaseCount">Increase Count</button>
     <p>{{count}}</p>
@@ -19,18 +21,26 @@
     <button @click="secondCounter++">Increase Second</button>
     <p>Counter: {{ counter }}</p>
     <p>Counter: {{ secondCounter }}</p>
-    <p>Result: {{ result }}</p> 
+    <p>Result: {{ result }}</p>
     <p>Result: {{ secondResult }}</p>
+    <br>
+    <br>
+    <button @click="resetFn()">Reset Name</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "HelloWorld",
+  props: {
+    name: String,
+    resetFn: Function
+  },
   data: function() {
     return {
+      name: this.name,
       title: "Vue JS App",
-      msg: "Hello Imran!",
+      msg: "Hello ",
       vueLink: "https://vuejs.org",
       vueHTML: '<a href="http://www.cnn.com">CNN</a>',
       count: 0,
@@ -47,7 +57,7 @@ export default {
     reverseMessage: function() {
       console.log("reverseMessage Called");
 
-      this.title = "Reversed vue JS App"
+      this.title = this.title
         .split("")
         .reverse()
         .join("");

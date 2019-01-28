@@ -1,8 +1,9 @@
 <template>
   <div id="appContainer">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld/>
-    <HomePage/>
+    <HelloWorld :name="name" :resetFn="resetName"/>
+    <HomePage :name="name" @nameWasReset="name = $event"/>
+    <button @click="changeName">Change my Name</button>
   </div>
 </template>
 
@@ -15,6 +16,19 @@ export default {
   components: {
     HelloWorld,
     HomePage
+  },
+  data: function() {
+    return {
+      name: "Imran Gilani"
+    };
+  },
+  methods: {
+    changeName: function() {
+      this.name = "Aneesa Gilani";
+    },
+    resetName: function() {
+      this.name = "Huma Gilani";
+    }
   }
 };
 </script>

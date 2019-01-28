@@ -1,27 +1,42 @@
 <template>
-  <div class="homepage">
-   ================================ <br/>   
-   <h3>{{ title }}</h3>
-   <div class="demo" @click="attachRed = !attachRed" :class="{red:attachRed}">
-   </div>
-   <div class="demo" :class="divClasses"></div>
-   <div class="demo" :class="color"></div>
-   <input type="text" v-model="color">
+  <div class="homepage">================================
+    <br>
+    <h3>{{ title }} {{ name }}</h3>
+    <div class="demo" @click="attachRed = !attachRed" :class="{red:attachRed}"></div>
+    <div class="demo" :class="divClasses"></div>
+    <div class="demo" :class="color"></div>
+    <input type="text" v-model="color">
+    <br>
+    <button @click="resetName">Reset Name</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HomePage",
+  props: {
+    name: {
+      type: String
+      // required: true,
+      //default: 'Huma Gilani' (For Primitives, string, boolean etc)
+
+      //type:Array or Object (not primitive)
+      //default: function(){return{name: 'Huma Gilani'}}
+    }
+  },
   data: function() {
     return {
-      title: "Welcome to the home-portal Imran!",
+      title: "Welcome to the home-portal ",
       attachRed: false,
       attachGreen: false,
       color: "green"
     };
   },
-  methods: {},
+  methods: {
+    resetName: function() {
+      this.name = "Your Name";
+      this.$emit("nameWasReset", this.name);
+    }
+  },
   computed: {
     divClasses: function() {
       return {
