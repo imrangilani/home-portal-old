@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { eventBus } from "../main.js";
 export default {
   name: "HelloWorld",
   props: {
@@ -70,6 +71,11 @@ export default {
     increaseCount: function() {
       this.count++;
     }
+  },
+  created() {
+    eventBus.$on("nameWasResetAgain", name => {
+      this.name = name;
+    });
   },
   computed: {
     result: function() {

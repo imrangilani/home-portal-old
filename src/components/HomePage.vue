@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { eventBus } from "../main.js";
 export default {
   props: {
     name: {
@@ -33,8 +34,12 @@ export default {
   },
   methods: {
     resetName: function() {
-      this.name = "Your Name";
-      this.$emit("nameWasReset", this.name);
+      this.name = "Irsa Gilani";
+      //this.$emit("nameWasReset", this.name); // Piping data and events
+
+      //Moving the following call to centralized bus Vue instance.
+      //eventBus.$emit("nameWasResetAgain", this.name); // Using central bus (new Vue instance to manage events and data)
+      eventBus.resetName(this.name);
     }
   },
   computed: {
