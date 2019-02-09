@@ -4,22 +4,29 @@
     <HelloWorld :name="name" :resetFn="resetName"/>
     <HomePage :name="name" @nameWasReset="name = $event"/>
     <button @click="changeName">Change my Name</button>
+    <Slots :slotData="slotData">
+        <h3 slot="firstSlot" class='slotClass'>This is html being passed from the parent to component</h3>
+        <p>lorem ipsem</p>
+    </Slots>
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import HomePage from "./components/HomePage.vue";
+import Slots from "./components/Slots.vue";
 
 export default {
-  name: "appl",
+  name: "container",
   components: {
     HelloWorld,
-    HomePage
+    HomePage,
+    Slots
   },
   data: function() {
     return {
-      name: "Imran Gilani"
+      name: "Imran Gilani",
+      slotData: "first slot" 
     };
   },
   methods: {
@@ -42,4 +49,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.slotClass{
+  color:red;
+}
+
 </style>
