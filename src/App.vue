@@ -1,12 +1,19 @@
 <template>
   <div id="appContainer">
     <img alt="Vue logo" src="./assets/logo.png">
+    <button @click="selectedComponent= 'HelloWorld'">Show HelloWorld</button>
+    <button @click="selectedComponent= 'HomePage'">Show HomePage</button>
+    <button @click="selectedComponent='Slots'">Show Slots</button>
+    <keep-alive>
+      <component :is="selectedComponent"></component>
+    </keep-alive>
+    ***********************************************
     <HelloWorld :name="name" :resetFn="resetName"/>
     <HomePage :name="name" @nameWasReset="name = $event"/>
     <button @click="changeName">Change my Name</button>
     <Slots :slotData="slotData">
-        <h3 slot="firstSlot" class='slotClass'>This is html being passed from the parent to component</h3>
-        <p>lorem ipsem</p>
+      <h3 slot="firstSlot" class="slotClass">This is html being passed from the parent to component</h3>
+      <p>lorem ipsem</p>
     </Slots>
   </div>
 </template>
@@ -26,7 +33,8 @@ export default {
   data: function() {
     return {
       name: "Imran Gilani",
-      slotData: "first slot" 
+      slotData: "first ever slot",
+      selectedComponent: HelloWorld
     };
   },
   methods: {
@@ -49,8 +57,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.slotClass{
-  color:red;
+.slotClass {
+  color: red;
 }
-
 </style>
