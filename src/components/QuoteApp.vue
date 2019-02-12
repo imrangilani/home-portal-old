@@ -1,21 +1,23 @@
 <template>
-    <div class="quoteAppContainer">
-    </div>
+  <div class="quoteAppContainer">
+    <quote-grid></quote-grid>
+  </div>
 </template>
 <script>
+import QuoteGrid from "./QuoteGrid";
 export default {
-    data: function(){
-        return{
-            quotes:[
-                'Just a quote to see something'
-            ],
-            maxQuotes: 10
-        }
-    }
-}
+  components: {
+    QuoteGrid
+  },
+  data: function() {
+    return {
+      quotes: ["Just a quote to see something"],
+      maxQuotes: 10
+    };
+  }
+};
 </script>
 <style scoped>
-
 </style>
 
 
