@@ -1,63 +1,32 @@
 <template>
   <div id="appContainer">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <button @click="selectedComponent= 'HelloWorld'">Show HelloWorld</button>
-    <button @click="selectedComponent= 'HomePage'">Show HomePage</button>
-    <button @click="selectedComponent='Slots'">Show Slots</button>
-    <keep-alive>
-      <component :is="selectedComponent"></component>
-    </keep-alive>
-    ***********************************************
-    <HelloWorld :name="name" :resetFn="resetName"/>
-    <HomePage :name="name" @nameWasReset="name = $event"/>
-    <button @click="changeName">Change my Name</button>
-    <Slots :slotData="slotData">
-      <h3 slot="firstSlot" class="slotClass">This is html being passed from the parent to component</h3>
-      <p>lorem ipsem</p>
-    </Slots>
+    <img alt="Vue logo" src="./assets/logo.png"><br>
+    <button @click="selectedComponent= 'Container'">Show Container</button>
+    <button @click="selectedComponent= 'QuoteGrid'">Show QuoteGrid</button>
+    <component :is="selectedComponent"></component>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import HomePage from "./components/HomePage.vue";
-import Slots from "./components/Slots.vue";
+import Container from "./components/Container.vue"
+import QuoteGrid from "./components/QuoteGrid.vue"
 
 export default {
-  name: "container",
+  name: "mainApp",
   components: {
-    HelloWorld,
-    HomePage,
-    Slots
+    Container,
+    QuoteGrid
   },
   data: function() {
     return {
-      name: "Imran Gilani",
-      slotData: "first ever slot",
-      selectedComponent: HelloWorld
+      selectedComponent: QuoteGrid
     };
   },
   methods: {
-    changeName: function() {
-      this.name = "Aneesa Gilani";
-    },
-    resetName: function() {
-      this.name = "Huma Gilani";
-    }
+    
   }
 };
 </script>
 
 <style>
-#appContainer {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-.slotClass {
-  color: red;
-}
 </style>
