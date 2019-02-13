@@ -1,6 +1,6 @@
 <template>
   <div class="quoteAppContainer">
-    <quote-grid></quote-grid>
+    <QuoteGrid :quotes="quotes"></QuoteGrid>
   </div>
 </template>
 <script>
@@ -11,7 +11,7 @@ export default {
   },
   data: function() {
     return {
-      quotes: ["Just a quote to see something"],
+      quotes: ["You make choices and your choices make you", "You lose when you give up"],
       maxQuotes: 10
     };
   }

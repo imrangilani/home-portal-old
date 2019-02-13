@@ -4,11 +4,15 @@
   </div>
 </template>
 <script>
-import Quote from "./Quote";
+import Quote from "./Quote.vue";
 export default {
-  props: ["quotes"],
+  props: ['quotes'],
   components: {
     Quote
+  },
+  data: function(){
+    return {
+    }
   }
 };
 </script>
